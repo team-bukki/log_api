@@ -34,6 +34,12 @@ public class ApiResponse<T> {
                 .build();
     }
 
+    public static ApiResponse<?> error(Exception exception){
+        return ApiResponse.error(ApiError.builder()
+                .code("UNKNOWN")
+                .message(exception.getMessage())
+                .build());
+    }
     public static ApiResponse<?> error(ApiError error) {
         return ApiResponse.error(error, error.getMessage());
     }
